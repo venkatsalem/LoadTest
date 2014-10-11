@@ -64,6 +64,7 @@ public class LoadRunnerEngine {
 			fileName = StringUtils.substringBefore(fileName, "?");
 			String fileExtension = StringUtils.substringAfterLast(fileName, ".");
 			fileExtension = StringUtils.substringBefore(fileExtension, ";");
+			fileExtension = StringUtils.substringBefore(fileExtension, "/w:lm/");
 			if (fileExtension != null && extensionToIgnore.contains(fileExtension.toLowerCase())) {
 				continue;
 			} else if (url.indexOf("wicket:interface") > 0 && url.endsWith("::::")) {

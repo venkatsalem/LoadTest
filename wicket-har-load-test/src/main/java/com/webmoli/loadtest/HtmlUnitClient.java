@@ -29,10 +29,8 @@ public class HtmlUnitClient {
 		return getResource(new GetMethodWebRequest(url));
 	}
 
-	public WebResponse post(String url, String postData, String mimeType)
-			throws IOException {
-		return getResource(new PostMethodWebRequest(url,
-				new ByteArrayInputStream(postData.getBytes()), mimeType));
+	public WebResponse post(String url, String postData, String mimeType) throws IOException {
+		return getResource(new PostMethodWebRequest(url, new ByteArrayInputStream(postData.getBytes()), mimeType));
 	}
 
 	public WebResponse getResource(WebRequest request) throws IOException {
@@ -61,7 +59,11 @@ public class HtmlUnitClient {
 		}
 		for (String cookie : cookies) {
 			String keyValue[] = StringUtils.split(cookie, "=");
-			this.cookies.put(keyValue[0], keyValue[1]);
+			if (keyValue.length == 2) {
+				this.cookies.put(keyValue[0], keyValue[1]);
+			} else if (keyValue.length == 1) {
+				this.cookies.remove(keyValue[0]);
+			}
 		}
 	}
 }

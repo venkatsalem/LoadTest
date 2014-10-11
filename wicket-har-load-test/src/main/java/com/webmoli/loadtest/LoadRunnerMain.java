@@ -12,6 +12,8 @@ public class LoadRunnerMain {
 		if (args == null || args.length < 3) {
 			System.err.println("This program require 3 arguments. <har-file-path> <nunber-of-thread> <domain-name>");
 		} else {
+			// http://stackoverflow.com/questions/7615645/ssl-handshake-alert-unrecognized-name-error-since-upgrade-to-java-1-7-0
+			System.setProperty("jsse.enableSNIExtension", "false");
 			try {
 				String harFile = args[0];
 				int numberOfThread = NumberUtils.toInt(args[1]);

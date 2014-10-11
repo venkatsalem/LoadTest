@@ -41,3 +41,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/.metadata
+/wicket-har-load-test/target
+/wicket-har-load-test/.project
+/wicket-har-load-test/.classpath
+/wicket-har-load-test/har-file
