@@ -12,6 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<selenium.version>2.39.0</selenium.version>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
@@ -42,11 +43,19 @@
 		<finalName>wicket-har-load-test</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.webmoli.loadtest.LoadTestMain</mainClass>
+							<mainClass>com.webmoli.loadtest.LoadRunnerMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
